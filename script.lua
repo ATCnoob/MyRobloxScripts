@@ -65,69 +65,17 @@ end)
 -- Boss Functions
 --------------------------------------------------
 
-local function presskey_e()
-	VirtualInputManager:SendKeyEvent(true, Enum.KeyCode.E, false, game)
-	task.wait(0.1)
-	VirtualInputManager:SendKeyEvent(false, Enum.KeyCode.E, false, game)
-end
-
-local function mouseleftclick(x, y)
-	VirtualInputManager:SendMouseButtonEvent(x, y, 0, true, game, 1)
-	task.wait(0.1)
-	VirtualInputManager:SendMouseButtonEvent(x, y, 0, false, game, 1)
-end
-
-local function interactboss()
-	presskey_e()
-
-	for i = 1, 5 do
-		mouseleftclick(946, 388)
-		task.wait(0.3)
+local function pressKey(keyName)
+	local keyCode = Enum.KeyCode[keyName]
+	if not keyCode then
+		warn("Invalid key:", keyName)
+		return
 	end
-	task.wait(5)
-	mouseleftclick(640, 595)
+
+	VirtualInputManager:SendKeyEvent(true, keyCode, false, game)
+	task.wait(0.1)
+	VirtualInputManager:SendKeyEvent(false, keyCode, false, game)
 end
-
---------------------------------------------------
--- Auto Boss Loop
---------------------------------------------------
-
-task.spawn(function()
-	while true do
-		if AutoBoss and character then
-			local boss4 = workspace.RefreshPoints.NPC:FindFirstChild("boss4Spawn1")
-			local boss5 = workspace.RefreshPoints.NPC:FindFirstChild("boss5Spawn1")
-			local boss6 = workspace.RefreshPoints.NPC:FindFirstChild("boss6Spawn1")
-			local boss7 = workspace.RefreshPoints.NPC:FindFirstChild("boss7Spawn1")
-			local boss8 = workspace.RefreshPoints.NPC:FindFirstChild("boss8Spawn1")
-			local boss9 = workspace.RefreshPoints.NPC:FindFirstChild("boss9Spawn1")
-
-			if boss7 then
-				character:PivotTo(boss7.CFrame)
-				task.wait(0.5)
-
-				if AutoBoss then
-					interactboss()
-				end
-			end
-
-			task.wait(2)
-
-			if boss8 then
-				character:PivotTo(boss8.CFrame)
-				task.wait(0.5)
-
-				if AutoBoss then
-					interactboss()
-				end
-			end
-
-			task.wait(2)
-		else
-			task.wait(1)
-		end
-	end
-end)
 
 --------------------------------------------------
 -- Auto Follow Loop
