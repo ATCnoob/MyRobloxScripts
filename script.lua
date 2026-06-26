@@ -77,6 +77,51 @@ local function pressKey(keyName)
 	VirtualInputManager:SendKeyEvent(false, keyCode, false, game)
 end
 
+task.spawn(function()
+	while true do
+		if AutoBoss and character then
+			local boss4 = workspace.RefreshPoints.NPC:FindFirstChild("boss4Spawn1")
+			local boss5 = workspace.RefreshPoints.NPC:FindFirstChild("boss5Spawn1")
+			local boss6 = workspace.RefreshPoints.NPC:FindFirstChild("boss6Spawn1")
+			local boss7 = workspace.RefreshPoints.NPC:FindFirstChild("boss7Spawn1")
+			local boss8 = workspace.RefreshPoints.NPC:FindFirstChild("boss8Spawn1")
+			local boss9 = workspace.RefreshPoints.NPC:FindFirstChild("boss9Spawn1")
+
+			-- Spam E
+			task.spawn(function()
+				-- Spam E
+        		while true do
+            		pressKey("E")
+            		task.wait(0.1)
+        		end
+    		end)
+
+    		-- Spam Space
+    		task.spawn(function()
+       			while true do
+            	pressKey("Space")
+            	task.wait(0.1)
+        		end
+    		end)
+
+			if boss8 and AutoBoss then
+				character:PivotTo(boss8.CFrame)
+			end
+
+			task.wait(2)
+
+			if boss8 and AutoBoss then
+				character:PivotTo(boss8.CFrame)
+				task.wait(0.5)
+			end
+
+			task.wait(2)
+		else
+			task.wait(1)
+		end
+	end
+end)
+
 --------------------------------------------------
 -- Auto Follow Loop
 --------------------------------------------------
