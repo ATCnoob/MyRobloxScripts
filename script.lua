@@ -110,9 +110,8 @@ task.spawn(function()
 
 			task.wait(2)
 
-			if boss8 and AutoBoss then
-				character:PivotTo(boss8.CFrame)
-				task.wait(0.5)
+			if boss9 and AutoBoss then
+				character:PivotTo(boss9.CFrame)
 			end
 
 			task.wait(2)
