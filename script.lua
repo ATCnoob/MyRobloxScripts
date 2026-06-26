@@ -92,7 +92,19 @@ task.spawn(function()
 						local hrp = pet:FindFirstChild("HumanoidRootPart")
 
 						if hrp and (hrp.Position - myHRP.Position).Magnitude <= 50 then
+							-- Direction from target to player
+							local direction = (myHRP.Position - hrp.Position).Unit
+
+							-- Position 5 studs away from the target
+							local offsetPos = hrp.Position + direction * 5
+
+							-- Move to the offset first
+							humanoid:MoveTo(offsetPos)
+							humanoid.MoveToFinished:Wait()
+
+							-- Then move to the target
 							humanoid:MoveTo(hrp.Position)
+
 							break
 						end
 					end
@@ -100,6 +112,6 @@ task.spawn(function()
 			end
 		end
 
-		task.wait(1)
+		task.wait(0.1)
 	end
 end)
