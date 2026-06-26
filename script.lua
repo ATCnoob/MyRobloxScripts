@@ -92,9 +92,7 @@ task.spawn(function()
 						local hrp = pet:FindFirstChild("HumanoidRootPart")
 
 						if hrp and (hrp.Position - myHRP.Position).Magnitude <= 50 then
-							-- Then move to the target
 							humanoid:MoveTo(hrp.Position)
-
 							break
 						end
 					end
@@ -102,6 +100,6 @@ task.spawn(function()
 			end
 		end
 
-		task.wait(0.1)
+		task.wait(1)
 	end
 end)
