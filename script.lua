@@ -142,7 +142,7 @@ task.spawn(function()
 					for _, pet in ipairs(creature:GetChildren()) do
 						local hrp = pet:FindFirstChild("HumanoidRootPart")
 
-						if hrp and (hrp.Position - myHRP.Position).Magnitude <= 50 then
+						if hrp and (hrp.Position - myHRP.Position).Magnitude <= 10 then
 							humanoid:MoveTo(hrp.Position)
 							humanoid.MoveToFinished:Wait()
 							pressKey("W")
