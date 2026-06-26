@@ -144,6 +144,7 @@ task.spawn(function()
 
 						if hrp and (hrp.Position - myHRP.Position).Magnitude <= 50 then
 							humanoid:MoveTo(hrp.Position)
+							pressKey("W")
 							break
 						end
 					end
